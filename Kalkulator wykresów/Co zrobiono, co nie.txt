@@ -1,0 +1,11 @@
+Zrobiono:
+- skracanie funkcji o niepotrzebne spacje
+- zamianę f(x) na y
+- definicję klasy i kostruktor/destruktor funkcji
+- funkcje weryfikacyjne funkcji-stringa w pliku wykonawczym i nagłowkowym
+- konwersja na ONP takich elementów jak: liczby, zmienne x, stałe PI oraz e, operatory, nawiasy otwierające i zamykające w różnych kombinacjach i przypadkach
+
+Nie zrobiono:
+- konwersji na ONP funkcji specjalnych
+- doboru stringów do obliczeń
+- zapętlenia procesu powyższego dla 10 tyś. zmiennych x i zwrotu tablicy wyników.

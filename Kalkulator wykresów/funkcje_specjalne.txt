@@ -1,0 +1,16 @@
+fact(a) - silnia liczby a
+root(n, a) - pierwiastek n-tego stopnia z liczby a
+exp(a) - e (liczba Eulera) do potęgi a
+log(a, b) - logarytm o podstawie a liczby b
+lg(a) - logarytm o podstawie 10 liczby a
+ln(a) - logarytm naturalny liczby a
+sin(a) - sinus liczby a
+cos(a) - cosinus liczby a
+tg(a) - tangens liczby a
+ctg(a) - cotangens liczby a
+arcsin(a) - arcus sinus liczby a
+arccos(a) - arcus cosinus liczby a
+arctg(a) - arcus tangens liczby a
+arcctg(a) - arcus cotangens liczby a
+abs(a), |a| - moduł liczby a 
+scn(a, n) - notacja naukowa liczby a razy 10 do potęgi n
