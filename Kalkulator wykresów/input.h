@@ -3,26 +3,25 @@
 #include <vector>
 #include "conditioners.h"
 
-class relation {
+class relation { // dla przysz³ych relacji np. równania
 public:
 	relation();
 	virtual void rel() = 0;
 	virtual ~relation();
 };
 
-class function : virtual public relation {
+class input : virtual public relation {
 	std::string formula;
 public:
-	function(std::string formula);
+	input(std::string formula);
 
 	std::string getFormula() const {
 		return formula;
 	}
 
 	void rel() override;
-	void shortenFunction(const function& f);
+	void shortenFunction(const input& f);
 	void convertIntoRPN(char s[], size_t l);
-	std::vector<std::string> inheritRPN(char s[], size_t l);
 
-	virtual ~function();
+	virtual ~input();
 };

@@ -1,9 +1,9 @@
 #pragma once
-
 #include <string>
 
-bool isLetter(char c);
-bool isOperator(char c);
-bool isBracket(char c);
-bool isSpecialFunction(const std::string& token);
-int operatorPriority(char c);
+bool isLetter(char);
+bool isOperator(char);
+bool isBracket(char);
+bool isSpecialFunction(const std::string&);
+int operatorPriority(char);
+bool isXVaribale(std::string);

@@ -1,8 +1,8 @@
-#include "function.h"
+#include "input.h"
 #include "converters.h"
 #include <iostream>
 
-void function::shortenFunction(const function& f) {
+void input::shortenFunction(const input& f) {
 	std::string formula = f.getFormula();
 	char* formulaChar = convertStringArray(formula);
 	int n = 0;

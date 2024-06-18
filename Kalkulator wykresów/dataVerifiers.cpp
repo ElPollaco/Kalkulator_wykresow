@@ -44,3 +44,10 @@ int operatorPriority(char op) {
 bool isBracket(char c) {
 	return (c == '(' || c == ')' || c == '[' || c == ']');
 }
+
+bool isXVaribale(std::string s) {
+	for (auto sPart : s) {
+		if (sPart == 'x') return true;
+	}
+	return false;
+}
