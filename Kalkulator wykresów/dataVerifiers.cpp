@@ -45,9 +45,16 @@ bool isBracket(char c) {
 	return (c == '(' || c == ')' || c == '[' || c == ']');
 }
 
-bool isXVaribale(std::string s) {
+bool hasX(std::string s) {
 	for (auto sPart : s) {
 		if (sPart == 'x') return true;
+	}
+	return false;
+}
+
+bool hasOperator(std::string s) {
+	for (auto sPart : s) {
+		if (isOperator(sPart)) return true;
 	}
 	return false;
 }

@@ -6,4 +6,5 @@ bool isOperator(char);
 bool isBracket(char);
 bool isSpecialFunction(const std::string&);
 int operatorPriority(char);
-bool isXVaribale(std::string);
+bool hasX(std::string);
+bool hasOperator(std::string);

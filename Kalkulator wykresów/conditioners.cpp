@@ -2,7 +2,7 @@
 #include "dataVerifiers.h"
 #include <iostream>
 
-void handleSpecialFunction(const std::string& token, std::vector<char>& operators, std::vector<std::string>& returnStack, char array[], int& i, size_t l);
+std::vector<int> handleSpecialFunction(const std::string& token, std::vector<char>& operators, std::vector<std::string>& returnStack, char array[], int& i, size_t l);
 
 void handleOperator(char character, std::vector<char>& operators, std::vector<std::string>& returnStack) {
 	while (!operators.empty() && operatorPriority(operators.back()) >= operatorPriority(character)) {
@@ -23,6 +23,22 @@ void handleClosingBracket(char character, std::vector<char>& operators, std::vec
 	else {
 		throw std::runtime_error("Nawiasy zosta³y nieprawid³owo dopasowane w zapisanej funkcji.");
 	}
+}
+
+int moveArrayByDistance(std::vector<int> lengthArray) {
+	int movingInt = 0; // liczba przesuwaj¹ca liczbê i po argumencie
+
+	if (lengthArray.capacity() == 1) { // dla tylko jednego argumentu, d³ugoœæ argumentu + 2 nawiasy miêdzy argumentem
+		movingInt = 2 + lengthArray[0];
+	}
+	else if (lengthArray.capacity() > 1) {
+		// dla wiêcej ni¿ jednego argumentu, d³ugoœæ ka¿dego argumentu + 2 nawiasy + liczba przecinków tj. iloœæ argumentów - 1
+		for (auto& argLen : lengthArray) {
+			movingInt += argLen;
+		}
+		movingInt += (2 + (lengthArray.capacity() - 1));
+	}
+	return movingInt;
 }
 
 std::vector<std::string> elementAnalysis(std::string token, std::vector<char>& operators, std::vector<std::string>& returnStack, char array[], size_t l) {
@@ -81,35 +97,6 @@ std::vector<std::string> elementAnalysis(std::string token, std::vector<char>& o
 					break;
 				}
 			}
-
-			for (int j = i; j > operBraRange; j--) { // wypychanie operatorów * lub ^ w zale¿noœci od powtarzajacych siê tych samych operacji 
-				if (operatorPriority(array[j]) > 1 || array[j] == 'x') {
-					std::string lastElement = returnStack.back(); // ostatnio znaleziony operator w zbiorze zwrotnym
-
-					if (array[j] == 'x') {
-						if (lastElement != "*") { //  do poprawy - wprowadziæ dodatkowy warunek
-							returnStack.push_back("*");
-						}
-						for (size_t k = operators.size() - 1; k > 0; k--) {
-							if (operators[k] == '*') {
-								operators.erase(operators.begin() + k);
-								break;
-							}
-						}
-					}
-					else if (operatorPriority(array[j]) == 3) {
-						if (lastElement != "^") { //  do poprawy - wprowadziæ dodatkowy warunek
-							returnStack.push_back("^");
-						}
-						for (size_t k = operators.size() - 1; k > 0; k--) {
-							if (operators[k] == '^') {
-								operators.erase(operators.begin() + k);
-								break;
-							}
-						}
-					}
-				}
-			}
 		}
 		// sprawdzenie znaków pod k¹tem wystêpuj¹cych nawiasów zamykaj¹cych we wzorze funkcji
 		else if (character == ')' || character == ']') {
@@ -128,7 +115,9 @@ std::vector<std::string> elementAnalysis(std::string token, std::vector<char>& o
 			i--;
 
 			if (isSpecialFunction(token)) { // jeœli funkcja specjalna
-				handleSpecialFunction(token, operators, returnStack, array, i, l);
+				std::vector<int> argLenArray = handleSpecialFunction(token, operators, returnStack, array, i, l);
+				int movingInt = moveArrayByDistance(argLenArray);
+				i += movingInt;
 			}
 		}
 	}
