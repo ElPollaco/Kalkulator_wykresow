@@ -12,5 +12,5 @@ arcsin(a) - arcus sinus liczby a
 arccos(a) - arcus cosinus liczby a
 arctg(a) - arcus tangens liczby a
 arcctg(a) - arcus cotangens liczby a
-abs(a), |a| - moduł liczby a 
+abs(a) - moduł liczby a 
 scn(a, n) - notacja naukowa liczby a razy 10 do potęgi n
